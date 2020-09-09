@@ -9,7 +9,7 @@
 100.times do
   Link.create(
     name: Faker::Company.name,
-    slug: Faker::Lorem.characters(number: 10),
+    slug: Faker::Lorem.unique.characters(number: 10),
     url: Faker::Internet.url
   )
 end
