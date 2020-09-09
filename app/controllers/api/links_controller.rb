@@ -1,11 +1,15 @@
 class Api::LinksController < Api::BaseController
-  before_action :set_link, except: %i[index]
+  before_action :set_link, except: %i[index create]
 
   def index
     @links = Link.page(params[:page])
   end
 
   def show; end
+
+  def create
+    @link = Link.create link_params
+  end
 
   def update
     @link.update link_params
