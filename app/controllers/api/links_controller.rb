@@ -1,8 +1,8 @@
-class Api::LinksController < ApplicationController
+class Api::LinksController < Api::BaseController
   before_action :set_link, except: %i[index]
 
   def index
-    @links = Links.all
+    @links = Link.page(params[:page])
   end
 
   def show; end
@@ -22,7 +22,7 @@ class Api::LinksController < ApplicationController
   private
 
   def set_link
-    @link = Link.find_by_slug(params[:slug])
+    @link = Link.find_by_id(params[:id])
   end
 
   def link_params
